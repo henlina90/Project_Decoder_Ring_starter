@@ -1,15 +1,41 @@
-// Please refrain from tampering with the setup code provided here,
-// as the index.html and test files rely on this setup to work properly.
-// Only add code (e.g., helper methods, variables, etc.) within the scope
-// of the anonymous function on line 6
-
+// input: the inputted txt to be encoded/decoded
+// alphabet: the substitution alphabet
+// encode: whether to encode/decode the text
+// encode is set to true by default
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
-
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
+    // return false if substitution alphabet don't exist & be 26 chars long
+    if (!alphabet || alphabet.length !== 26) {
+      return false;
+    }
+    const subAlphabetArray = alphabet.toLowerCase().split("");
+    // all chars in the alphabet param must be unique
+    // return false !unique
+    for (let character of subAlphabetArray) {
+      let uniqueChar = subAlphabetArray.filter((chars) => chars === character);
+      if (uniqueChar.length > 1) {
+        return false;
+      }
+    }
+    const alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+    const inputArray = input.toLowerCase().split("");
+    let results = [];
+    if (encode) {
+      for (let i = 0; i < alphabet.length; i++) {
+        results[alphabetArray[i]] = alphabet[i];
+      }
+    } else {
+      for (let i = 0; i < alphabet.length; i++) {
+        results[alphabet[i]] = alphabetArray[i];
+      }
+    }
+    // maintain space or encode char
+    let output = inputArray.map((char) => {
+      if (char === " ") return " ";
+      return results[char];
+    });
+    return output.join("");
   }
-
   return {
     substitution,
   };
