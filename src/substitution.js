@@ -4,7 +4,7 @@
 // encode is set to true by default
 const substitutionModule = (function () {
   function substitution(input, alphabet, encode = true) {
-    // return false if substitution alphabet don't exist & be 26 chars long
+    // sub alphabet must exist & 26 chars long
     if (!alphabet || alphabet.length !== 26) {
       return false;
     }
@@ -18,6 +18,7 @@ const substitutionModule = (function () {
       }
     }
     const alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("");
+    // ignore capital letters
     const inputArray = input.toLowerCase().split("");
     let results = [];
     if (encode) {
@@ -31,7 +32,9 @@ const substitutionModule = (function () {
     }
     // maintain space or encode char
     let output = inputArray.map((char) => {
-      if (char === " ") return " ";
+      if (char === " ") {
+        return " ";
+      }
       return results[char];
     });
     return output.join("");

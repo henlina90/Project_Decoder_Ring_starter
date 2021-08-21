@@ -56,13 +56,15 @@ const polybiusModule = (function () {
     55: "z",
   };
 
-  // input refers to the inputted text to be encoded or decoded.
-  // encode refers to whether you should encode or decode the message. By default it is set to true.
+  // input: the inputted text to be encoded or decoded
+  // encode: whether to encode or decode the message
+  // encode is set to true by default
+  // should maintain spaces
   function polybius(input, encode = true) {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
-
     if (encode) {
       const encodedInput = [];
+      // ignore capital letters
       const convertedInput = [...input.toLowerCase()];
       convertedInput.forEach((char) => {
         if (!alphabet.includes(char)) {
@@ -72,8 +74,12 @@ const polybiusModule = (function () {
       });
       return encodedInput.join("");
     } else {
-      if (input.split(" ").join("").length % 2) return false;
+      // num of chars excluding spaces should be even
+      if (input.split(" ").join("").length % 2) {
+        return false;
+      }
       const decodedInput = [];
+      // each letter is represented by numerical pairs
       for (i = 0; i < input.length; i = i + 2) {
         let char = input[i];
         let nextChar = input[i + 1];
