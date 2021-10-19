@@ -1,50 +1,26 @@
-# :file_folder: **decoder_ring_project**
-Starter files for decoder ring project
+<h2>Decoder Ring</h2>
+A decoder application built with JavaScript that uses three encrypting and decrypting methods: Caesar, Polybius, and Substitution.<br />
+<h3>Caesar</h3>
+<img src="https://github.com/AudreyMargolis/Project-Decoder-Ring/blob/main/b6a94b251bbbe6dae7e3e84ed8be33a4-image.png" />
+The Caesar Shift is a type of substitution cipher originally used by Julius Caesar to protect messages of military significance. It relies on taking the alphabet and "shifting" letters to the right or left, based on the typical alphabetic order.
+For example, if you were to "shift" the alphabet to the right by 3, the letter "A" would become "D".<br />
+```"thinkful" -> "wklqnixo"```<br />
+When decoding the message, you need to know the number the original message was shifted by so that you can shift in the opposite direction.<br /><br />
+<h3>Polybius</h3>
+<img src="https://github.com/AudreyMargolis/Project-Decoder-Ring/blob/main/Capture.PNG" />
+The Polybius Square is a cipher that is achieved by arranging a typical alphabet into a grid. Each letter is represented through a coordinate. For example, in the above table, the letter "B" would be represented by the numerical pair "21".
 
-# :memo: Project description: Decoder ring
-**You're planning a surprise birthday party for a friend who loves escape rooms and puzzles. What better way to practice your new coding skills than to build an application that will help you encode and decode all kinds of fun messages?**
+Typically, it is possible to arrange the letters however you like and read off the coordinates in whatever direction you like. In this example, the grid will be arranged as above and coordinates will be read by comparing the first digit to the number on the top of the table and the second digit to that on the left.<br />
+```"thinkful" -> "4432423352125413"```<br />
+When decoding the message, each pair of numbers is translated using the coordinates.
+<h3>Substitution</h3>
+<img src="https://github.com/AudreyMargolis/Project-Decoder-Ring/blob/main/19c12a6ee38ceddd82d75e12edf53189-image.png" />
+The Substitution Cipher requires a standard alphabet and a substitution alphabet. Letters from the standard alphabet will be transposed to the standard alphabet. This cipher requires that the recipient have the substitution alphabet, otherwise it will be difficult for them to decode the message.
+<br />
+For example, in the image above, the word "HELLO" would be translated as follows:<br />
 
-**For at least part of this project, try following a TDD process. Once you get the hang of it, you'll find that writing tests can be a great way to focus your workflow.**
-
-Remember to sync this Qualified project with your local machine.
-
-For detailed instructions on how to complete this project, consult the instructions on the Qualified assessment page.
-
-## :dart: Learning objectives
-**This project is designed to test your ability to build complex algorithms. It will also test your ability to write unit tests with Mocha and Chai to test your algorithms. You will not need to make any edits to HTML or CSS for this project. Before taking on this project, you should be comfortable with the learning objectives listed below:**
-
-* Writing a series of unit tests using Mocha and Chai
-* Using different `expect()` methods to test your code
-
-## :large_blue_diamond: Project steps to complete
-**To complete this project, you must do the following:**
-
-* Write code that passes all the tests in the Qualified assessment in this lesson.
-* Write code that passes all of the requirements outlined below, and submit your GitHub repo link to the Thinkful team in the next lesson.
-
-## :white_check_mark: Requirements to pass
-**For your project to pass, all of the following statements must be true. These criteria are reflected in the rubric in the following lesson.**
-
-* All tests are passing in Qualified.
-
-For the **Caesar shift** (example: `caesar("Zebra Magazine", 3) => "cheud pdjdclqh"`), the tests that you write should test that the following is true:
-
-* It returns `false` if the shift value is equal to `0`, less than `-25`, greater than `25`, or not present.
-* It ignores capital letters. (For example, the results of `A Message` and `a message` should be the same.)
-* When encoding, it handles shifts that go past the end of the alphabet. (For example, shifting `z` to the right by `3` should cause the `z` to wrap around to the front of the alphabet, so that `z` becomes `c`.)
-* It maintains spaces and other nonalphabetic symbols in the message, before and after encoding or decoding.
-
-For the **Polybius square** (example: `polybius("message") => "23513434112251"`), the tests that you write should test that the following is true:
-
-* When encoding, it translates the letters `i` and `j` to `42`.
-* When decoding, it translates `42` to `(i/j)`.
-* It ignores capital letters. (For example, the results of `A Message` and `a message` should be the same.)
-* It maintains spaces in the message, before and after encoding or decoding.
-
-For the **Substitution cipher** (example: `substitution("message", "plmoknijbuhvygctfxrdzeswaq") => "ykrrpik"`), the tests that you write should test that the following is true:
-
-* It returns `false` if the given alphabet isn't exactly 26 characters long.
-* It correctly translates the given phrase, based on the alphabet given to the function.
-* It returns `false` if there are any duplicate characters in the given alphabet.
-* It maintains spaces in the message, before and after encoding or decoding.
-* It ignores capital letters. (For example, the results of `A Message` and `a message` should be the same.)
+-"H" becomes "R".<br />
+-"E" becomes "M".<br />
+-"L" becomes "W".<br />
+-"O" becomes "L".<br />
+This would result in the code "RMWWL". To decrypt this code, you would simply take the result and transpose back from the substitution alphabet to the standard alphabet.
