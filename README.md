@@ -1,4 +1,4 @@
-<h2>Decoder Ring</h2>
+# Decoder Ring (Thinkful Project)
 A decoder application built with JavaScript that uses three encrypting and decrypting methods: Caesar, Polybius, and Substitution.<br />
 <h3>Caesar</h3>
 <img src="https://github.com/AudreyMargolis/Project-Decoder-Ring/blob/main/b6a94b251bbbe6dae7e3e84ed8be33a4-image.png" />
